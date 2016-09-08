@@ -42,12 +42,14 @@ class API {
      * Call resource by name from Teamgate API
      *
      * @param string $name
-     * @param array $args
-     * @throws ResponseException
+     * @throws ValidationException
      * @return \StdClass
      */
-    function __call($name, $args = array())
+    function __get($name)
     {
+        if (property_exists($this, $name)) {
+            return $this->$name;
+        }
         $className = '\\' . __NAMESPACE__ . '\\Model\\' . ucfirst($name);
         if (class_exists($className)) {
             return new $className($this->_getTransport());
@@ -61,7 +63,7 @@ class API {
      * @param string $name
      * @return mixed|null
      */
-    function getOption($name)
+    private function getOption($name)
     {
         return isset($this->_options[$name]) ? $this->_options[$name] : null;
     }
