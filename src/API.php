@@ -22,7 +22,7 @@ class API {
      * @param array $options
      * @throws ValidationException
      */
-    function __construct($options)
+    public function __construct($options)
     {
         if (!isset($options['apiKey']) || !isset($options['authToken'])) {
             throw new ValidationException('You need to provide apiKey and authToken in `options`');
@@ -45,7 +45,7 @@ class API {
      * @throws ValidationException
      * @return \StdClass
      */
-    function __get($name)
+    public function __get($name)
     {
         if (property_exists($this, $name)) {
             return $this->$name;
