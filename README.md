@@ -67,7 +67,7 @@ $result = $api->leads->create(
 var_dump($result);
 ```
 
-## Error handling
+## Error Handling
 When you instantiate a client or make any request via service objects, exceptions can be raised for multiple of reasons e.g. a server error, an authentication error, an invalid params and etc.
 
 Below shows how to properly handle exceptions:
@@ -89,7 +89,7 @@ try
 } 
 catch (Teamgate\Exception\ValidationException) 
 {
-  // Invalid client configuration
+  /* Invalid client configuration */
 } 
 catch (Teamgate\Exception\TransportException $e) 
 {
@@ -98,17 +98,17 @@ catch (Teamgate\Exception\TransportException $e)
 }
 catch (Teamgate\Exception\ResponseException) 
 {
-  // Invalid query parameters or etc.
+  /* Invalid query parameters or etc. */
 }
 catch (Exception $e)
 {
-  // Other kind of exception
+  /* Other kind of exception */
 }
 ```
 
 # Documentation
 The documentation for the Teamgate API is located at http://developers.teamgate.com/
 
-# Getting help
+# Getting Help
 If you need help installing or using the library, please contact Teamgate Support at `support@teamgate.com`.
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
