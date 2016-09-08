@@ -87,7 +87,7 @@ try
   ));
   var_dump($result);
 } 
-catch (Teamgate\Exception\ValidationException) 
+catch (Teamgate\Exception\ValidationException $e) 
 {
   /* Invalid client configuration */
 } 
@@ -96,7 +96,7 @@ catch (Teamgate\Exception\TransportException $e)
   var_dump($e->getCode()); // HTTP Status Code
   var_dump($e->output); // Teamgate API Output
 }
-catch (Teamgate\Exception\ResponseException) 
+catch (Teamgate\Exception\ResponseException $e) 
 {
   /* Invalid query parameters or etc. */
 }
