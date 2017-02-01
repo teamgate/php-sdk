@@ -50,6 +50,10 @@ class API {
         if (property_exists($this, $name)) {
             return $this->$name;
         }
+        $className = '\\' . __NAMESPACE__ . '\\Collection\\' . ucfirst($name);
+        if (class_exists($className)) {
+            return new $className($this->_getTransport());
+        }
         $className = '\\' . __NAMESPACE__ . '\\Model\\' . ucfirst($name);
         if (class_exists($className)) {
             return new $className($this->_getTransport());

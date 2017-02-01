@@ -4,38 +4,38 @@ namespace Teamgate\Model;
 
 class Model 
 {
-    private $_transport;
+    protected $_uri;
+    
+    protected $_relations = [];
+
+    protected $_transport;
+    
+    public $data = [];
     
     public function __construct($transport) 
     {
         $this->_transport = $transport;
     }
     
-    public function get($arguments = []) 
-    {
-        if (is_array($arguments)) {
-            return $this->_transport->request(strtolower($this->_getShortClassName()), 'get', $arguments);
+    public function __get($name) {
+        if (isset($this->_relations[$name])) {
+            return $this->_getClass($this->_relations[$name])->fetchRelation($this->_uri, $this->data['id']);
         }
-        return $this->_transport->request(strtolower($this->_getShortClassName()) . '/' . (int) $arguments, 'get');
     }
     
-    public function create($arguments = [])
+    protected function _getClass($name)
     {
-        return $this->_transport->request(strtolower($this->_getShortClassName()), 'post', $arguments);
+        $className = '\\Teamgate\\Collection\\' . ucfirst($name);
+        return new $className($this->_transport);
     }
     
-    public function update($id, $arguments = [])
+    public function update($data)
     {
-        return $this->_transport->request(strtolower($this->_getShortClassName()) . '/' . (int) $id, 'put', $arguments);
+        return $this->_transport->request($this->_uri . '/' . (int) $this->data['id'], 'put', $data);
     }
     
-    public function delete($id)
+    public function delete()
     {
-        return $this->_transport->request(strtolower($this->_getShortClassName()) . '/' . (int) $id, 'delete');
-    }
-    
-    protected function _getShortClassName()
-    {
-        return (new \ReflectionClass($this))->getShortName();
+        return $this->_transport->request($this->_uri . '/' . (int) $this->data['id'], 'delete');
     }
 }
