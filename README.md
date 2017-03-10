@@ -9,7 +9,7 @@ You will need to make sure your server meets the following requirements:
 
 # Getting Started
 You can install via composer or by downloading the source. 
-Teamgate API client utilizes Composer to manage its dependencies. So, before using Teamgate API client, make sure you have Composer installed on your machine.
+[Teamgate API](http://docs.teamgate.com/reference/) client utilizes Composer to manage its dependencies. So, before using Teamgate API client, make sure you have Composer installed on your machine.
 
 ## Install Composer In Your Project
 Run this in your command line:
@@ -28,7 +28,7 @@ php composer.phar update
 ```
 
 ## Autoloading
-For libraries that specify autoload information, Composer generates a `vendor/autoload.php` file. You can simply include this file and you will get autoloading for free.
+For libraries that specify autoload information, [Composer](https://getcomposer.org/download/) generates a `vendor/autoload.php` file. You can simply include this file and you will get autoloading for free.
 ```php
 require __DIR__ . '/vendor/autoload.php';
 ```
@@ -50,7 +50,7 @@ $result = $api->deals->get([
 );
 var_dump($result);
 ```
-Create a new lead:
+[Lead management](https://www.teamgate.com/solutions/lead-management/) is an important part of any [sales process](https://www.teamgate.com/solutions/sales-pipeline-management/). Create a new lead automatically whenever a visitor fills out a form on your site:
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
@@ -107,8 +107,8 @@ catch (Exception $e)
 ```
 
 # Documentation
-The documentation for the Teamgate API is located at http://developers.teamgate.com/
+The documentation for the Teamgate API is located at http://docs.teamgate.com/reference/
 
 # Getting Help
 If you need help installing or using the library, please contact Teamgate Support at `support@teamgate.com`.
-If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
+If you've instead found a bug in the library or [would like new features](https://www.teamgate.com/integration-request-forms/) added, go ahead and open issues or pull requests against this repo!
