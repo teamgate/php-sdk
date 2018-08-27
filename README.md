@@ -16,18 +16,7 @@ Run this in your command line:
 ```bash
 curl -sS https://getcomposer.org/installer | php
 ```
-## Install Dependencies
-Execute this in your project root:
-```bash
-php composer.phar install
-```
-
-To update to the new version:
-```bash
-php composer.phar update
-```
-
-## Composer
+## Installation
 To install run:
 ```bash
 composer require teamgate/php-api-sdk:dev-master
