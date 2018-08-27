@@ -11,7 +11,7 @@
     "type": "library",
     "require": {
         "php": ">=5.5",
-        "ext-curl":"*"
+        "ext-curl": "@stable"
     },
     "autoload": {
         "psr-4": {
