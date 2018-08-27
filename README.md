@@ -27,6 +27,12 @@ To update to the new version:
 php composer.phar update
 ```
 
+## Composer
+To install run:
+```bash
+composer require teamgate/php-api-sdk:dev-master
+```
+
 ## Autoloading
 For libraries that specify autoload information, [Composer](https://getcomposer.org/download/) generates a `vendor/autoload.php` file. You can simply include this file and you will get autoloading for free.
 ```php
