@@ -100,6 +100,40 @@ catch (Exception $e)
   /* Other kind of exception */
 }
 ```
+# Advanced Usage
+For example retrieve all companies from your Teamgate account and change their logos by website domain through [Clearbit API](https://clearbit.com/docs#logo-api):
+```php
+require __DIR__ . '/vendor/autoload.php';
+
+$api = new \Teamgate\API([
+    'apiKey' => '_YOUR_ACCOUNT_API_KEY_', // located at account settings -> additional features -> external apps
+    'authToken' => '_YOUR_PERSONAL_AUTH_TOKEN_' // located at user settings -> preferences
+]);
+
+$result = $api->companies->get([
+        'offset' => 0, 
+        'limit' => 10
+    ]
+);
+
+foreach($result as $company) {
+    if (!empty($company->data['urls']) && !empty($company->data['urls'][0] && !empty($company->data['urls'][0]['value']))
+    {
+        list($domain) = parse_url($company->data['urls'][0]['value'], PHP_URL_HOST);
+        $logo = file_get_contents('https://logo.clearbit.com/' . $domain);
+        if ($logo) {
+            $company->changeLogo(
+                [
+                    'size' => strlen($logo),
+                    'content' => base64_encode($logo)
+                ]
+            );
+        }
+    }
+}
+
+var_dump($result);
+```
 
 # Documentation
 The documentation for the Teamgate API is located at http://docs.teamgate.com/reference/
