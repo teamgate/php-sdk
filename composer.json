@@ -8,6 +8,7 @@
             "email": "liushaz@gmail.com"
         }
     ],
+    "minimum-stability": "stable",
     "type": "library",
     "require": {
         "php": ">=5.5",
